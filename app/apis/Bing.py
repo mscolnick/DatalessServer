@@ -1,12 +1,7 @@
-'''
-This is designed for the new Azure Marketplace Bing Search API (released Aug 2012)
-Inspired by https://github.com/mlagace/Python-SimpleBing and
-http://social.msdn.microsoft.com/Forums/pl-PL/windowsazuretroubleshooting/thread/450293bb-fa86-46ef-be7e-9c18dfb991ad
-'''
-
 import requests # Get from https://github.com/kennethreitz/requests
 import string
 
+# static Wrapper for Bing Search API (do not use though)
 class BingSearchAPI():
     bing_api = "https://api.datamarket.azure.com/Data.ashx/Bing/Search/v1/Composite?"
 
@@ -42,32 +37,42 @@ class BingSearchAPI():
         return requests.get(request, auth=(self.key, self.key))
 
 
-if __name__ == "__main__":
-    my_key = "[your key]"
-    query_string = "Brad Pitt"
-    bing = BingSearchAPI(my_key)
-    params = {'ImageFilters':'"Face:Face"',
-              '$format': 'json',
-              '$top': 10,
-              '$skip': 0}
-    print bing.search('image+web',query_string,params).json() # requests 1.0+
-
-
 #------------------------Bing Search------------------------------------#
-my_key = "abwz7dDyF/DoVzamPRewH0Awh/rJCL8AkDyAfFr4Cbs"
-query_string = "Brad Pitt"
-bing = BingSearchAPI(my_key)
-params = {'ImageFilters':'"Face:Face"',
-          '$format': 'json',
-          '$top': 10,
-          '$skip': 0}
 
-def bing_search(query):
-  params = {'$format': 'json',
-              '$top': 10,
-              '$skip': 0}
-  a = bing.search('web',query,params).json()
-  results_list = a['d']['results'][0]['Web']
-  return results_list
+class BingApi:
+  def __init__(self):
+    my_key = "abwz7dDyF/DoVzamPRewH0Awh/rJCL8AkDyAfFr4Cbs"
+    self.bing = BingSearchAPI(my_key)
 
-# print bing_search("shane barratt")
+  def search(self, query, num_results):
+    # Input: query (string), num_results (int)
+    # Output: num_results results of query
+    params = {'$format': 'json',
+            '$top': num_results,
+            '$skip': 0}
+
+  def bing_search(self, query):
+    # Input: query (string)
+    # Output: list of results, descriptions and urls
+    params = {'$format': 'json',
+                '$top': 10,
+                '$skip': 0}
+    a = self.bing.search('web',query,params).json()
+    results_list = a['d']['results'][0]['Web']
+    results = []
+    descriptions = []
+    urls = []
+    for result in results_list:
+      results += [result['Title']]
+      descriptions += [result['Description']]
+      urls += [result['Url']]
+    return results, descriptions, urls
+
+if __name__ == '__main__':
+  bapi = BingApi()
+  results, descriptions, urls = bapi.bing_search("shane barratt")
+  for i in range(len(results)):
+    print results[i]
+    print descriptions[i]
+    print urls[i]
+    print "-"
