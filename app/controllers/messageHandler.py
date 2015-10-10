@@ -13,8 +13,8 @@ from app.apis.DataGov import DataGovApi
 from app.apis.Here import HereApi
 from app.apis.Sigimera import SigimeraApi
 
-MAX_BODY = 1600
-HEADER_SIZE = 16
+MAX_BODY = 150
+HEADER_SIZE = 14
 MAX_CONTENT_SIZE = MAX_BODY - HEADER_SIZE
 
 mapper = {
