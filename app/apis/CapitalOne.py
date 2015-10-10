@@ -4,6 +4,7 @@ import json
 # www.reimaginebanking.com
 
 class CapitalOneApi:
+
 	def __init__(self):
 		self.cone_url = 'http://api.reimaginebanking.com'
 		self.cone_key = '1366093bda72bf51ff7a0449c3e7f910'
