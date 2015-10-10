@@ -29,8 +29,8 @@ class MessageHandler():
     # "00010|012|004|1|{app='weather'}"
     # "message_id|total|fragment_id|app_id|{app='weather'}"
     h.addMessageToDB(body, to, 'sent')
-    if HEADER_SIZE + len(body) > 1600:
-      raise "Body size to large, need to split up"
+    # if HEADER_SIZE + len(body) > 1600:
+      # raise "Body size to large, need to split up"
     message = self.client.messages.create(body=body,
       to=to,   # Replace with your phone number
       from_=Twilio.Number) # Replace with your Twilio number
