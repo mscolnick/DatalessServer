@@ -1,4 +1,4 @@
-# Quick Start
+## Quick Start
 
 Clone the repo, then:
 
@@ -8,15 +8,15 @@ $ git remote add origin <the location of my new git repository>
 $ git push -u origin master
 ```
 
-## Run
+then make the server:
 
 ```sh
 $ make server
 ```
 
-# APIs
+## APIs
 
-## BingApi
+### BingApi
 
 #### bing_search
 Outgoing 
@@ -35,7 +35,7 @@ Incoming
 ]
 ```
 
-## CapitalOneApi
+### CapitalOneApi
 
 #### get_accounts
 Outgoing 
@@ -98,7 +98,7 @@ Incoming
 ]
 ```
 
-## DataGovApi
+### DataGovApi
 
 #### get_ingredients
 Outgoing 
@@ -119,7 +119,7 @@ Incoming
 ]
 ```
 
-## HereApi
+### HereApi
 
 #### get_weather
 Outgoing 
@@ -164,7 +164,7 @@ Incoming
 }
 ```
 
-## Times Api
+### Times Api
 
 #### get_articles
 Outgoing
@@ -201,7 +201,7 @@ Incoming
 '''
 
 
-## Wikipedia Api
+### Wikipedia Api
 
 #### get_summary
 Outgoing
