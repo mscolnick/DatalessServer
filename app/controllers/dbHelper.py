@@ -1,10 +1,11 @@
 from app.controllers.models import Message
 from app.controllers.database import db
 
-def addMessageToDB(body, phone_number, direction):
-  m = Message(body, phone_number, direction)
+def addMessageToDB(body, to_phone_number, from_phone_number, direction):
+  m = Message(body, to_phone_number, from_phone_number, direction)
   db.session.add(m)
   db.session.commit()
+  return m.id
 
 def getAllMessages():
   return Message.query.all()
