@@ -31,10 +31,10 @@ class TimesApi:
     assert section in ["home", "world", "national", "politics", "nyregion", "business", "opinion", "technology", "science", "health", "sports", "arts", "fashion", "dining", "travel", "magazine", "realestate"], "Invalid section"
     uri = 'http://api.nytimes.com/svc/topstories/v1/%s.json?api-key=%s' % (section, self.topstories_key)
     resp = json.loads(requests.get(uri).content)
-    resp["results"]
+    resp = resp["results"]
 
     filtered = []
-    for result in res:
+    for result in resp:
       filtered += [{
         'headline': result['title'],
         'abstract': result['abstract'],
