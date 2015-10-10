@@ -2,6 +2,8 @@ from twilio.rest import TwilioRestClient
 from config.development.APIKeys import Twilio
 from app.controllers import dbHelper as h
 import json
+import textwrap
+from app.utils import cleanString
 
 #APIs
 from app.apis.Bing import BingApi
@@ -10,7 +12,9 @@ from app.apis.DataGov import DataGovApi
 from app.apis.Here import HereApi
 from app.apis.Sigimera import SigimeraApi
 
+MAX_BODY = 1600
 HEADER_SIZE = 16
+MAX_CONTENT_SIZE = MAX_BODY - HEADER_SIZE
 
 mapper = {
   "0": BingApi,
@@ -29,11 +33,12 @@ class MessageHandler():
     # "00010|012|004|1|{app='weather'}"
     # "message_id|total|fragment_id|app_id|{app='weather'}"
     h.addMessageToDB(body, to, 'sent')
-    if HEADER_SIZE + len(body) > 1600:
-      raise "Body size to large, need to split up"
-    message = self.client.messages.create(body=body,
-      to=to,   # Replace with your phone number
-      from_=Twilio.Number) # Replace with your Twilio number
+    partitions = textwrap.wrap(body, MAX_CONTENT_SIZE)
+    for partition in partitions:
+      partition = cleanString(partition)
+      message = self.client.messages.create(body=partition,
+        to=to,                # Replace with your phone number
+        from_=Twilio.Number)  # Replace with your Twilio number
     return message.sid
 
   def recieveMessage(self, body, sender):

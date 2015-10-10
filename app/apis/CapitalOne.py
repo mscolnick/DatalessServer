@@ -63,5 +63,5 @@ class CapitalOneApi:
 if __name__ == '__main__':
 	c_one_api = CapitalOneApi()
 	print c_one_api.get_accounts()
-	print c_one_api.get_balance('560f0207f8d8770df0efa460')
+	print c_one_api.get_account('560f0207f8d8770df0efa460')
 	print c_one_api.get_customers()
