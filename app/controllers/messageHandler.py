@@ -39,7 +39,7 @@ class MessageHandler():
     print body
     jsonMessage = json.loads(body)
     app_id = jsonMessage["app_id"]
-    api_class = mapper(app_id)()
+    api_class = mapper[app_id]()
     method = jsonMessage["method"]
     assert hasattr(api_class, method), "API Class {} does not have method {}".format(api_class, method)
     params = jsonMessage["params"].values()
