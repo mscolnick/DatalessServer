@@ -8,5 +8,6 @@ app = create_app('config.development')
 if __name__ == '__main__':
     if not os.path.isfile(SQLALCHEMY_DATABASE_URI):
       setup_database(app)
+    app.debug = True
     app.run()
 
