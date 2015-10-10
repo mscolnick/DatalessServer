@@ -21,6 +21,7 @@ def send(message):
 @blueprint.route('/messages')
 def messages():
   messages = h.getAllMessages()
+  mh.recieveMessage('{"app_id": "1", "method": "get_accounts", "params": []}', '+13032500788')
   return " <br/> ".join(["{} {} {}".format(m.body, m.phone_number, m.direction) for m in messages])
 
 @blueprint.route('/recieve', methods=['POST'])
