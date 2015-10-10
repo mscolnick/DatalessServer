@@ -73,10 +73,4 @@ class BingApi:
 
 if __name__ == '__main__':
   bapi = BingApi()
-  results, descriptions, urls = bapi.bing_search("shane barratt")
-  for i in range(len(results)):
-    print results[i]
-    print descriptions[i]
-    print urls[i]
-    print "-"
-
+  print bapi.bing_search("shane barratt")
