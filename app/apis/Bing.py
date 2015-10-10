@@ -73,4 +73,4 @@ class BingApi:
 
 if __name__ == '__main__':
   bapi = BingApi()
-  print bapi.bing_search("shane barratt")
+  print bapi.bing_search("dogs")

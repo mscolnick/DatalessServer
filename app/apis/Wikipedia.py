@@ -8,10 +8,12 @@ class WikipediaApi:
 	def get_summary(self, topic, num_sentences=4):
 	# Input: topic (string), num_sentences (int)
 	# Output: string of topic
-	num_sentences = int(num_sentences)
-	return json.dumps({
-					  "summary": wikipedia.summary(topic, sentences=num_sentences),
-					  "topic": topic})
+		num_sentences = int(num_sentences)
+		result = {
+			"summary": wikipedia.summary(topic, sentences=num_sentences),
+			"topic": topic
+		}
+		return json.dumps(result)
 
 if __name__ == '__main__':
 	wapi = WikipediaApi()
