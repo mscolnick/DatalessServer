@@ -48,7 +48,7 @@ class MessageHandler():
     return message.sid
 
   def recieveMessage(self, body, sender):
-    h.addMessageToDB(body, sender, 'inbound')
+    h.addMessageToDB(body, Twilio.Number, sender, 'inbound')
     jsonMessage = json.loads(body)
     app_id = jsonMessage["app_id"]
     api_class = mapper[app_id]()
