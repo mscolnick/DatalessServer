@@ -145,3 +145,55 @@ Incoming
   "summary": "The trip takes 553 m and 10 mins."
 }
 ```
+
+## Times Api
+
+#### get_articles
+Outgoing
+'''json
+{"app_id": "5", "method": "get_articles", "params": ["bombings"]}
+'''
+Incoming
+'''json
+[
+  {
+    "headline": "A Quest for New York\u2019s Perfect Biscuit",
+    "abstract": "A growing number of shops and restaurants in New York City are devoted to the art of biscuit-making.",
+    "web_url": "http:\/\/www.nytimes.com\/2015\/10\/14\/dining\/best-biscuits-nyc.html"
+  },
+  ...
+]
+'''
+
+#### get_topstories
+Outgoing
+'''json
+{"app_id": "5", "method": "get_topstories", "params": ["world"]}
+'''
+Incoming
+'''json
+[
+  {
+    "headline": "Explosions During Peace Rally\u00a0in Ankara, Turkey\u2019s Capital, Kill at Least 86",
+    "abstract": "Turkish authorities were investigating claims that the attacks, which also wounded 186, were the work of suicide bombers.",
+    "web_url": "http:\/\/www.nytimes.com\/2015\/10\/11\/world\/europe\/ankara-turkey-explosion-deaths.html"
+  },
+  ...
+]
+'''
+
+
+## Wikipedia Api
+
+#### get_summary
+Outgoing
+'''json
+{"app_id": "6", "method": "get_summary", "params": ["bananas","5"]}
+'''
+Incoming
+'''json
+{
+  "topic": "bananas",
+  "summary": "The banana is an edible fruit, botanically a berry, produced by several kinds of large herbaceous flowering plants in the genus Musa. In some countries, bananas used for cooking may be called plantains. The fruit is variable in size, color and firmness, but is usually elongated and curved, with soft flesh rich in starch covered with a rind which may be green, yellow, red, purple, or brown when ripe. The fruits grow in clusters hanging from the top of the plant. Almost all modern edible parthenocarpic (seedless) bananas come from two wild species \u2013 Musa acuminata and Musa balbisiana."
+}
+'''

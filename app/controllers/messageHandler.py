@@ -11,6 +11,7 @@ from app.apis.CapitalOne import CapitalOneApi
 from app.apis.DataGov import DataGovApi
 from app.apis.Here import HereApi
 from app.apis.Sigimera import SigimeraApi
+from app.apis.Times import TimesApi
 
 MAX_BODY = 1600
 HEADER_SIZE = 16
@@ -21,7 +22,9 @@ mapper = {
   "1": CapitalOneApi,
   "2": DataGovApi,
   "3": HereApi,
-  "4": SigimeraApi
+  "4": SigimeraApi,
+  "5": TimesApi,
+  "6": WikipediaApi
 }
 
 class MessageHandler():
