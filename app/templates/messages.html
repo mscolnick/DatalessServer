@@ -1,0 +1,28 @@
+<!doctype html>
+<title>Messages</title>
+<link rel=stylesheet type=text/css href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<div class=page>
+  <h1>Messages</h1>
+
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>Body</th>
+      <th>To</th>
+      <th>From</th>
+      <th>Direction</th>
+      <th>Date</th>
+    </tr>
+    {% for m in messages %}
+    <tr>
+      <td>{{ m.id }}</td>
+      <td>{{ m.body }}</td>
+      <td>{{ m.to_phone_number }}</td>
+      <td>{{ m.from_phone_number }}</td>
+      <td>{{ m.direction }}</td>
+      <td>{{ m.dateSent }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+</div>
