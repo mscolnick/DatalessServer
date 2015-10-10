@@ -1,5 +1,6 @@
 ## BingApi
 
+#### bing_search
 Outgoing 
 ```json
 {"app_id": "0", "method": "bing_search", "params": ["dogs"]}
@@ -8,7 +9,7 @@ Incoming
 ```json
 [
   {
-    "Description": "Shane Barratt also agreed that more construction is needed rather than more speed cameras"
+    "Description": "Shane Barratt also agreed that more construction is needed rather than more speed cameras",
     "Title": "Readers have their say on A38 safety concerns | Burton Mail",
     "Url": "http://www.burtonmail.co.uk/Readers-say-A38-safety-concerns/story-27940928-detail/story.html"
   },
@@ -17,6 +18,8 @@ Incoming
 ```
 
 ## CapitalOneApi
+
+#### get_accounts
 Outgoing 
 ```json
 {"app_id": "1", "method": "get_accounts", "params": []}
@@ -35,11 +38,12 @@ Incoming
   ...
 ]
 ```
+
+#### get_account
 Outgoing 
 ```json
 {"app_id": "1", "method": "get_account", "params": ["560f0207f8d8770df0efa460"]}
 ```
-
 Incoming
 ```json
 {
@@ -52,11 +56,11 @@ Incoming
 }
 ```
 
+#### get_customers
 Outgoing 
 ```json
 {"app_id": "1", "method": "get_customers", "params": []}
 ```
-
 Incoming
 ```json
 [
@@ -76,12 +80,13 @@ Incoming
 ]
 ```
 
+## DataGovApi
+
+#### get_ingredients
 Outgoing 
 ```json
 {"app_id": "2", "method": "get_ingredients", "params": ["bacon"]}
 ```
-
-## DataGovApi
 Incoming
 ```json
 [
@@ -96,13 +101,13 @@ Incoming
 ]
 ```
 
-
 ## HereApi
+
+#### get_weather
 Outgoing 
 ```json
 {"app_id": "3", "method": "get_weather", "params": ["37.868474037", "-122.2503770"]}
 ```
-
 Incoming
 ```json
 {
@@ -121,11 +126,12 @@ Incoming
   ]
 }
 ```
+
+#### get_route
 Outgoing 
 ```json
 {"app_id": "3", "method": "get_route", "params": ["37.868474037", "-122.2503770", "37.868336", "-122.254682"]}
 ```
-
 Incoming
 ```json
 {
