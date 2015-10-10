@@ -7,7 +7,7 @@ export PYTHONPATH := $(PYTHONPATH):.
 
 # Run a local web server
 server: $(VENV)
-	. $(VENV)/bin/activate; python run.py
+	. $(VENV)/bin/activate; python application.py
 
 config/%/env: config/%/requirements.txt
 	virtualenv $@
