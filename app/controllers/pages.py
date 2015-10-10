@@ -1,10 +1,9 @@
 from flask import Blueprint
-from twilio.rest import TwilioRestClient
-from config.development.APIKeys import TwilioAccount, TwilioToken
+from messageHandler import MessageHandler
+from app.controllers import dbHelper as h
 
 blueprint = Blueprint('pages', __name__)
-account_sid = TwilioAccount
-auth_token  = TwilioToken
+mh = MessageHandler()
 
 ################
 #### routes ####
@@ -12,15 +11,21 @@ auth_token  = TwilioToken
 
 @blueprint.route('/')
 def home():
-  return 'Hello World!'
+  return 'Dataless!'
+
+@blueprint.route('/send/<message>')
+def send(message):
+  sid = mh.sendMessage(message)
+  return sid
+
+@blueprint.route('/messages')
+def messages():
+  # messages = mh.getMessages()
+  messages = h.getAllMessages()
+  return " |\n ".join([m.body for m in messages])
 
 
-@blueprint.route('/about')
-def about():
-  # Your Account Sid and Auth Token from twilio.com/user/account
-  client = TwilioRestClient(account_sid, auth_token)
-
-  message = client.messages.create(body="Cal Hacks Baby",
-      to="+13032500788",    # Replace with your phone number
-      from_="+17206135689") # Replace with your Twilio number
-  return message.sid
+@blueprint.route('/recieve')
+def recieve(message):
+  sid = mh.sendMessage(message)
+  return sid
