@@ -7,3 +7,4 @@ SQLAlchemy==1.0.8
 Werkzeug==0.10.4
 twilio==4.6.0
 requests==2.5.1
+wikipedia==1.4.0
