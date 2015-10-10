@@ -168,11 +168,11 @@ Incoming
 
 #### get_articles
 Outgoing
-'''json
+```json
 {"app_id": "5", "method": "get_articles", "params": ["bombings"]}
-'''
+```
 Incoming
-'''json
+```json
 [
   {
     "headline": "A Quest for New York\u2019s Perfect Biscuit",
@@ -181,15 +181,15 @@ Incoming
   },
   ...
 ]
-'''
+```
 
 #### get_topstories
 Outgoing
-'''json
+```json
 {"app_id": "5", "method": "get_topstories", "params": ["world"]}
-'''
+```
 Incoming
-'''json
+```json
 [
   {
     "headline": "Explosions During Peace Rally\u00a0in Ankara, Turkey\u2019s Capital, Kill at Least 86",
@@ -198,7 +198,7 @@ Incoming
   },
   ...
 ]
-'''
+```
 
 
 ### Wikipedia Api
