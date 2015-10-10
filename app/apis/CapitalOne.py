@@ -1,5 +1,4 @@
 import requests
-import json
 
 # www.reimaginebanking.com
 
@@ -24,7 +23,7 @@ class CapitalOneApi:
     #   ...
     # ]
 	  r = requests.get(self.cone_url + '/accounts?key='+self.cone_key)
-	  return json.loads(r.content)
+	  return r.content
 
 	def get_account(self, account_id):
     # Input: account_id
@@ -38,7 +37,7 @@ class CapitalOneApi:
     #   "nickname": "Gerhardts Account"
     # }
 	  r = requests.get(str(self.cone_url) + '/accounts/' + str(account_id) + "?key=" + self.cone_key)
-	  return json.loads(r.content)
+	  return r.content
 
 	def get_customers(self):
     # Input: None
@@ -59,7 +58,7 @@ class CapitalOneApi:
     #   ...
     # ]
 	  r = requests.get('http://api.reimaginebanking.com/customers?key=' + self.cone_key)
-	  return json.loads(r.content)
+	  return r.content
 
 if __name__ == '__main__':
 	c_one_api = CapitalOneApi()

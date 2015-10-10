@@ -1,5 +1,6 @@
 import requests # Get from https://github.com/kennethreitz/requests
 import string
+import json
 
 # static Wrapper for Bing Search API (do not use though)
 class BingSearchAPI():
@@ -44,29 +45,31 @@ class BingApi:
     my_key = "abwz7dDyF/DoVzamPRewH0Awh/rJCL8AkDyAfFr4Cbs"
     self.bing = BingSearchAPI(my_key)
 
-  def search(self, query, num_results):
-    # Input: query (string), num_results (int)
-    # Output: num_results results of query
-    params = {'$format': 'json',
-            '$top': num_results,
-            '$skip': 0}
-
   def bing_search(self, query):
     # Input: query (string)
     # Output: list of results, descriptions and urls
+    # [
+    #   {
+    #     "Description": "Shane Barratt also agreed that more construction is needed rather than more speed cameras,
+    #     "Title": "Readers have their say on A38 safety concerns | Burton Mail",
+    #     "Url": "http://www.burtonmail.co.uk/Readers-say-A38-safety-concerns/story-27940928-detail/story.html"
+    #   },
+    #   ...
+    # ]
     params = {'$format': 'json',
                 '$top': 10,
                 '$skip': 0}
     a = self.bing.search('web',query,params).json()
     results_list = a['d']['results'][0]['Web']
-    results = []
-    descriptions = []
-    urls = []
+    filtered = []
     for result in results_list:
-      results += [result['Title']]
-      descriptions += [result['Description']]
-      urls += [result['Url']]
-    return results, descriptions, urls
+      item = {
+        "Title": result['Title'],
+        "Description": result['Description'],
+        "Url": result['Url']
+      }
+      filtered.append(item)
+    return json.dumps(filtered)
 
 if __name__ == '__main__':
   bapi = BingApi()
@@ -76,3 +79,4 @@ if __name__ == '__main__':
     print descriptions[i]
     print urls[i]
     print "-"
+
