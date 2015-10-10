@@ -25,7 +25,7 @@ def messages():
   return " |\n ".join([m.body + m.phone_number + m.direction for m in messages])
 
 @blueprint.route('/recieve', methods=['GET', 'POST'])
-def recieve(message):
+def recieve():
   if request.method == 'POST' or request.method == 'GET':
     sender = str(request.values.get("From"))
     body = str(request.values.get("Body"))
