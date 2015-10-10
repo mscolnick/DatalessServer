@@ -3,6 +3,7 @@ from config.development.APIKeys import Twilio
 from app.controllers import dbHelper as h
 import json
 import textwrap
+from app.utils import cleanString
 
 #APIs
 from app.apis.Bing import BingApi
@@ -34,6 +35,7 @@ class MessageHandler():
     h.addMessageToDB(body, to, 'sent')
     partitions = textwrap.wrap(body, MAX_CONTENT_SIZE)
     for partition in partitions:
+      partition = cleanString(partition)
       message = self.client.messages.create(body=partition,
         to=to,                # Replace with your phone number
         from_=Twilio.Number)  # Replace with your Twilio number
