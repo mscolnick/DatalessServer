@@ -50,7 +50,7 @@ class BingApi:
     # Output: list of results, descriptions and urls
     # [
     #   {
-    #     "Description": "Shane Barratt also agreed that more construction is needed rather than more speed cameras,
+    #     "Description": "Shane Barratt also agreed that more construction is needed rather than more speed cameras"
     #     "Title": "Readers have their say on A38 safety concerns | Burton Mail",
     #     "Url": "http://www.burtonmail.co.uk/Readers-say-A38-safety-concerns/story-27940928-detail/story.html"
     #   },
