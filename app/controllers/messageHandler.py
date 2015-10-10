@@ -2,19 +2,22 @@ from twilio.rest import TwilioRestClient
 from config.development.APIKeys import Twilio
 from app.controllers import dbHelper as h
 import json
-import twilio.twiml
 
 #APIs
-from app.apis import Bing, CapitalOne, DataGov, Here, Sigimera
+from app.apis.Bing import BingApi
+from app.apis.CapitalOne import CapitalOneApi
+from app.apis.DataGov import DataGovApi
+from app.apis.Here import HereApi
+from app.apis.Sigimera import SigimeraApi
 
 HEADER_SIZE = 16
 
 mapper = {
-  "0": Bing,
-  "1": CapitalOne,
-  "2": DataGov,
-  "3": Here,
-  "4": Sigimera
+  "0": BingApi,
+  "1": CapitalOneApi,
+  "2": DataGovApi,
+  "3": HereApi,
+  "4": SigimeraApi
 }
 
 class MessageHandler():
@@ -35,20 +38,14 @@ class MessageHandler():
 
   def recieveMessage(self, body, sender):
     h.addMessageToDB(body, sender, 'recieve')
-
-    print body
     jsonMessage = json.loads(body)
     app_id = jsonMessage["app_id"]
     api_class = mapper[app_id]()
     method = jsonMessage["method"]
     assert hasattr(api_class, method), "API Class {} does not have method {}".format(api_class, method)
-    params = jsonMessage["params"].values()
-    respMessage = api_class.method(**params)
-
-    resp = twilio.twiml.Response()
-    resp.message(respMessage)
-
-    return resp.sid
+    params = jsonMessage["params"]
+    respMessage = getattr(api_class, method)(*params)
+    return self.sendMessage(str(respMessage[0]), sender)
 
   def getMessages(self):
     return self.client.messages.list()
