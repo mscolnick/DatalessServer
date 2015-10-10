@@ -1,8 +1,8 @@
 from app.controllers.models import Message
 from app.controllers.database import db
 
-def addMessageToDB(body, to):
-  m = Message(body, to)
+def addMessageToDB(body, phone_number, direction):
+  m = Message(body, phone_number, direction)
   db.session.add(m)
   db.session.commit()
 
