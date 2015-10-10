@@ -29,8 +29,5 @@ def recieve():
   if request.method == 'POST':
     sender = str(request.values.get("From"))
     body = str(request.values.get("Body"))
-    mh.recieveMessage(body, sender)
-    # TODO (sbarrett) handle request and send response
-    # return response.sid
-    return None
+    return mh.recieveMessage(body, sender)
   return "This is a POST endpoint"

@@ -45,7 +45,7 @@ class MessageHandler():
     assert hasattr(api_class, method), "API Class {} does not have method {}".format(api_class, method)
     params = jsonMessage["params"]
     respMessage = getattr(api_class, method)(*params)
-    return self.sendMessage(str(respMessage[0]), sender)
+    return self.sendMessage(str(respMessage), sender)
 
   def getMessages(self):
     return self.client.messages.list()
