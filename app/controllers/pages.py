@@ -11,7 +11,7 @@ mh = MessageHandler()
 
 @blueprint.route('/')
 def home():
-  return 'Dataless!'
+  return 'Dataless Home!'
 
 @blueprint.route('/send/<message>')
 def send(message):
@@ -20,15 +20,16 @@ def send(message):
 
 @blueprint.route('/messages')
 def messages():
-  # messages = mh.getMessages()
   messages = h.getAllMessages()
-  return " |\n ".join([m.body + m.phone_number + m.direction for m in messages])
+  return " <br/> ".join(["{} {} {}".format(m.body, m.phone_number, m.direction) for m in messages])
 
-@blueprint.route('/recieve', methods=['GET', 'POST'])
+@blueprint.route('/recieve', methods=['POST'])
 def recieve():
-  if request.method == 'POST' or request.method == 'GET':
+  if request.method == 'POST':
     sender = str(request.values.get("From"))
     body = str(request.values.get("Body"))
     mh.recieveMessage(body, sender)
-    return request.method + sender + body
-  return "Not an endpoint"
+    # TODO (sbarrett) handle request and send response
+    # return response.sid
+    return None
+  return "This is a POST endpoint"
