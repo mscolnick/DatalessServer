@@ -22,7 +22,7 @@ def send(message):
 def messages():
   # messages = mh.getMessages()
   messages = h.getAllMessages()
-  return " |\n ".join([m.body + m.phone_numebr + m.direction for m in messages])
+  return " |\n ".join([m.body + m.phone_number + m.direction for m in messages])
 
 @blueprint.route('/recieve', methods=['GET', 'POST'])
 def recieve(message):

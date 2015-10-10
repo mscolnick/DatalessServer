@@ -2,8 +2,8 @@ import logging
 from flask import Flask, request as req
 from app.controllers.database import db
 from app.controllers import pages
-from config.development import SQLALCHEMY_DATABASE_URI
-import os
+# from config.development import SQLALCHEMY_DATABASE_URI
+# import os
 
 def create_app(config_filename):
     app = Flask(__name__)
@@ -21,10 +21,10 @@ def create_app(config_filename):
         )
         return resp
 
-    if not os.path.isfile(SQLALCHEMY_DATABASE_URI):
-        setup_database(app)
+    setup_database(app)
     return app
 
 def setup_database(app):
     with app.app_context():
+        db.drop_all()
         db.create_all()
