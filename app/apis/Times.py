@@ -1,6 +1,5 @@
 import requests
 import json
-import IPython as ipy
 
 # http://developer.nytimes.com/docs/
 class TimesApi:
@@ -12,17 +11,17 @@ class TimesApi:
     # Input: search_query (string) - what you want to search for
     # Output: list of string json objects which contain headline, abstract and web_url
     uri = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?q=%s&sort=newest&api-key=%s' % (search_query, self.article_search_key)
-    resp = json.loads(requests.get(uri).content)
-    resp = resp["response"]["docs"]
+    resp = json.loads(requests.get(uri).content)["response"]["docs"]
 
     filtered = []
     for result in resp:
-      filtered += [{
+      item = {
         'headline': result['headline']['main'],
         'abstract': result['lead_paragraph'],
         'web_url': result['web_url']
-      }]
-    return json.dumps(filtered) 
+      }
+      filtered.append(item)
+    return json.dumps(filtered)
 
   def get_topstories(self, section='world'):
     # Input: section = home, world, national, politics, nyregion, business, opinion, technology, science, health, sports, arts, fashion, dining, travel, magazine, realestate
@@ -30,20 +29,19 @@ class TimesApi:
     section = section.lower()
     assert section in ["home", "world", "national", "politics", "nyregion", "business", "opinion", "technology", "science", "health", "sports", "arts", "fashion", "dining", "travel", "magazine", "realestate"], "Invalid section"
     uri = 'http://api.nytimes.com/svc/topstories/v1/%s.json?api-key=%s' % (section, self.topstories_key)
-    resp = json.loads(requests.get(uri).content)
-    resp = resp["results"]
+    resp = json.loads(requests.get(uri).content)["results"]
 
     filtered = []
     for result in resp:
-      filtered += [{
+      item = {
         'headline': result['title'],
         'abstract': result['abstract'],
         'web_url': result['url']
-      }]
+      }
+      filtered.append(item)
     return json.dumps(filtered)
 
 if __name__ == '__main__':
   times_api = TimesApi()
-  # print times_api.get_news(37.7777,-120.2323)
   print times_api.get_articles('New York')
   print times_api.get_topstories('world')
