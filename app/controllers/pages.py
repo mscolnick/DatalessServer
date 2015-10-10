@@ -28,5 +28,6 @@ def recieve():
   if request.method == 'POST':
     sender = str(request.values.get("From"))
     body = str(request.values.get("Body"))
-    return mh.recieveMessage(body, sender)
+    date = str(request.values.get("DateSent"))
+    return mh.recieveMessage(body, sender, date)
   return "This is a POST endpoint"
