@@ -9,7 +9,7 @@ export PYTHONPATH := $(PYTHONPATH):.
 server: $(VENV)
 	. $(VENV)/bin/activate; python application.py
 
-config/%/env: config/%/requirements.txt
+config/%/env: ./requirements.txt
 	virtualenv $@
 	. $@/bin/activate && pip install --requirement $<
 

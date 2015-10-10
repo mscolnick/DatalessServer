@@ -1,0 +1,9 @@
+branch-defaults:
+  default:
+    environment: null
+global:
+  application_name: dataless
+  default_ec2_keyname: aws-eb
+  default_platform: Python 2.7
+  default_region: us-west-2
+  profile: null
