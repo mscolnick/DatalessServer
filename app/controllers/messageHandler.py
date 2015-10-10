@@ -12,6 +12,7 @@ from app.apis.DataGov import DataGovApi
 from app.apis.Here import HereApi
 from app.apis.Sigimera import SigimeraApi
 from app.apis.Times import TimesApi
+from app.apis.Wikipedia import WikipediaApi
 
 MAX_BODY = 1600
 HEADER_SIZE = 16
