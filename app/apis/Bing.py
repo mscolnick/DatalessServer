@@ -65,8 +65,8 @@ class BingApi:
     filtered = []
     for result in results_list:
       item = {
-        "Title": result['Title'],
-        "Description": result['Description'],
+        "Title": result['Title'].replace('"',"'"),
+        "Description": result['Description'].replace('"',"'"),
         "Url": result['Url']
       }
       filtered.append(item)
