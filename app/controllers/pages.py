@@ -27,7 +27,7 @@ def messages():
 def recieve():
   if request.method == 'POST':
     sender = str(request.values.get("From"))
-    body = str(request.values.get("Body"))
+    body = str(request.values.get("Body")).strip(' \t\n\r')
     date = str(request.values.get("DateSent"))
     return mh.recieveMessage(body, sender, date)
   return "This is a POST endpoint"
