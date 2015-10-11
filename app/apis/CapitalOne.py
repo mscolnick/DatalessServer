@@ -36,6 +36,7 @@ class CapitalOneApi:
     #   "balance": 17181,
     #   "nickname": "Gerhardts Account"
     # }
+    assert account_id != '', "invalid account id"
 	  r = requests.get(str(self.cone_url) + '/accounts/' + str(account_id) + "?key=" + self.cone_key)
 	  return r.content
 
