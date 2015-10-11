@@ -1,6 +1,5 @@
 import requests
 import json
-import IPython as ipy
 
 class GoogleApi:
 	def __init__(self):
@@ -16,4 +15,4 @@ class GoogleApi:
 
 if __name__ == '__main__':
 	gapi = GoogleApi()
-	print gapi.decode_address('2327 warring st')
+	print gapi.decode_address('alpha tau omega berkeley')
