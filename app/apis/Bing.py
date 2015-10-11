@@ -56,8 +56,9 @@ class BingApi:
     #   },
     #   ...
     # ]
+    LIMIT = 4
     params = {'$format': 'json',
-                '$top': 10,
+                '$top': LIMIT,
                 '$skip': 0}
     a = self.bing.search('web',query,params).json()
     results_list = a['d']['results'][0]['Web']
