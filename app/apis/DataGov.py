@@ -30,7 +30,11 @@ class DataGovApi:
       url = 'http://api.nal.usda.gov/ndb/reports/?ndbno=%s&type=b&format=json&api_key=%s' % (nbdno, self.datagov_api_key)
       resp = json.loads(requests.get(url).content)['report']['food']['nutrients']
       filtered = []
+      i = 0
       for e in resp:
+        i += 1
+        if i == 10:
+          break
         item = {
           "group": e['group'],
           "name": e['name'],

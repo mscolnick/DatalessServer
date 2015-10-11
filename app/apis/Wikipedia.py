@@ -8,12 +8,13 @@ class WikipediaApi:
   def get_summary(self, topic, num_sentences=4):
   # Input: topic (string), num_sentences (int)
   # Output: string of topic
-    num_sentences = int(num_sentences)
+    num_sentences = 4
+    # num_sentences = int(num_sentences)
     try:
       summary = wikipedia.summary(topic, sentences=num_sentences)
     except Exception as e: # in case disambiguation happens
       try:
-        topic = e.options[0] 
+        topic = e.options[0]
         summary = wikipedia.summary(topic, sentences=num_sentences)
       except:
         return {"summary": "no such article exists", "topic": topic}
