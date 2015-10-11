@@ -46,7 +46,7 @@ class HereApi:
     #     ...
     #   ]
     # }
-    lat, lon = self.gapi(address)
+    lat, lon = self.gapi.decode_address(address)
     resp = requests.get('https://weather.cit.api.here.com/weather/1.0/report.json?app_id=%s&app_code=%s&product=forecast_7days_simple&latitude=%s&longitude=%s' % (self.app_id, self.app_code, lat, lon))
     weather_data = json.loads(resp.content)
     forecasts = weather_data['dailyForecasts']['forecastLocation']['forecast']
@@ -72,8 +72,8 @@ class HereApi:
     #   ],
     #   "summary": "The trip takes 553 m and 10 mins."
     # }
-    lat0, lon0 = self.gapi(address0)
-    lat1, lon1 = self.gapi(address1)
+    lat0, lon0 = self.gapi.decode_address(address0)
+    lat1, lon1 = self.gapi.decode_address(address1)
     url = 'http://route.cit.api.here.com/routing/7.2/calculateroute.json?app_id=%s&app_code=%s&waypoint0=geo!%s,%s&waypoint1=geo!%s,%s&mode=fastest;pedestrian;traffic:disabled' % (self.app_id, self.app_code, lat0, lon0, lat1, lon1)
     resp = requests.get(url)
     resp = json.loads(resp.content)['response']['route'][0]
