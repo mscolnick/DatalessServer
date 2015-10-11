@@ -9,7 +9,7 @@ class TimesApi:
 
   def get_articles(self, search_query):
     # Input: search_query (string) - what you want to search for
-    # Output: list of string json objects which contain headline, abstract and web_url
+    # Output: list of string json objects which contain headline, summary and web_url
     uri = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?q=%s&sort=newest&api-key=%s' % (search_query, self.article_search_key)
     resp = json.loads(requests.get(uri).content)["response"]["docs"]
 
@@ -17,7 +17,7 @@ class TimesApi:
     for result in resp:
       item = {
         'headline': result['headline']['main'],
-        'abstract': result['lead_paragraph'],
+        'summary': result['lead_paragraph'],
         'web_url': result['web_url']
       }
       filtered.append(item)
@@ -35,7 +35,7 @@ class TimesApi:
     for result in resp:
       item = {
         'headline': result['title'],
-        'abstract': result['abstract'],
+        'summary': result['abstract'],
         'web_url': result['url']
       }
       filtered.append(item)
