@@ -15,7 +15,7 @@ from app.apis.Sigimera import SigimeraApi
 from app.apis.Times import TimesApi
 from app.apis.Wikipedia import WikipediaApi
 
-MAX_BODY = 150
+MAX_BODY = 1000
 HEADER_SIZE = 14
 MAX_CONTENT_SIZE = MAX_BODY - HEADER_SIZE
 
