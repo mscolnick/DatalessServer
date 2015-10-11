@@ -1,6 +1,5 @@
 import requests
 import json
-import IPython as ipy
 
 class GoogleApi:
 	def __init__(self):

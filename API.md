@@ -106,7 +106,7 @@ Incoming
 #### get_weather
 Outgoing 
 ```json
-{"app_id": "3", "method": "get_weather", "params": ["37.868474037", "-122.2503770"]}
+{"app_id": "3", "method": "get_weather", "params": ["Memorial Stadium"]}
 ```
 Incoming
 ```json
@@ -130,7 +130,7 @@ Incoming
 #### get_route
 Outgoing 
 ```json
-{"app_id": "3", "method": "get_route", "params": ["37.868474037", "-122.2503770", "37.868336", "-122.254682"]}
+{"app_id": "3", "method": "get_route", "params": ["Memorial Stadium", "Berkeley"]}
 ```
 Incoming
 ```json
@@ -150,11 +150,11 @@ Incoming
 
 #### get_articles
 Outgoing
-'''json
+```json
 {"app_id": "5", "method": "get_articles", "params": ["bombings"]}
-'''
+```
 Incoming
-'''json
+```json
 [
   {
     "headline": "A Quest for New York\u2019s Perfect Biscuit",
@@ -163,15 +163,15 @@ Incoming
   },
   ...
 ]
-'''
+```
 
 #### get_topstories
 Outgoing
-'''json
+```json
 {"app_id": "5", "method": "get_topstories", "params": ["world"]}
-'''
+```
 Incoming
-'''json
+```json
 [
   {
     "headline": "Explosions During Peace Rally\u00a0in Ankara, Turkey\u2019s Capital, Kill at Least 86",
@@ -180,20 +180,20 @@ Incoming
   },
   ...
 ]
-'''
+```
 
 
 ## Wikipedia Api
 
 #### get_summary
 Outgoing
-'''json
+```json
 {"app_id": "6", "method": "get_summary", "params": ["bananas","5"]}
-'''
+```
 Incoming
-'''json
+```json
 {
   "topic": "bananas",
   "summary": "The banana is an edible fruit, botanically a berry, produced by several kinds of large herbaceous flowering plants in the genus Musa. In some countries, bananas used for cooking may be called plantains. The fruit is variable in size, color and firmness, but is usually elongated and curved, with soft flesh rich in starch covered with a rind which may be green, yellow, red, purple, or brown when ripe. The fruits grow in clusters hanging from the top of the plant. Almost all modern edible parthenocarpic (seedless) bananas come from two wild species \u2013 Musa acuminata and Musa balbisiana."
 }
-'''
+```
