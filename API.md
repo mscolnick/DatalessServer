@@ -158,7 +158,7 @@ Incoming
 [
   {
     "headline": "A Quest for New York\u2019s Perfect Biscuit",
-    "abstract": "A growing number of shops and restaurants in New York City are devoted to the art of biscuit-making.",
+    "summary": "A growing number of shops and restaurants in New York City are devoted to the art of biscuit-making.",
     "web_url": "http:\/\/www.nytimes.com\/2015\/10\/14\/dining\/best-biscuits-nyc.html"
   },
   ...

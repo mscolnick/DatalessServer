@@ -13,8 +13,12 @@ class TimesApi:
     uri = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?q=%s&sort=newest&api-key=%s' % (search_query, self.article_search_key)
     resp = json.loads(requests.get(uri).content)["response"]["docs"]
 
+    NUM_ARTICLES = 3
+    assert NUM_ARTICLES < 10, "too many articles"
+    assert NUM_ARTICLES >= 1, "too few articles"
+
     filtered = []
-    for result in resp:
+    for result in resp[:NUM_ARTICLES]:
       item = {
         'headline': result['headline']['main'],
         'summary': result['lead_paragraph'],
