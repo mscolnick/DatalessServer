@@ -56,7 +56,7 @@ class BingApi:
     #   },
     #   ...
     # ]
-    LIMIT = 4
+    LIMIT = 10
     params = {'$format': 'json',
                 '$top': LIMIT,
                 '$skip': 0}
