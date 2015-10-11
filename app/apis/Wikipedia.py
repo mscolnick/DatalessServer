@@ -1,5 +1,6 @@
 import wikipedia
 import json
+import IPython as ipy
 
 class WikipediaApi:
 	def __init__(self):
@@ -10,11 +11,11 @@ class WikipediaApi:
 	# Output: string of topic
 		num_sentences = int(num_sentences)
 		result = {
-			"summary": wikipedia.summary(topic, sentences=num_sentences),
+			"summary": wikipedia.summary(topic, sentences=num_sentences).replace('"',"'"),
 			"topic": topic
 		}
 		return json.dumps(result)
 
 if __name__ == '__main__':
 	wapi = WikipediaApi()
-	print wapi.get_summary('bananas', 5)
+	print wapi.get_summary('sonny dykes', 5)
