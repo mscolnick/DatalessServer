@@ -15,4 +15,4 @@ class GoogleApi:
 
 if __name__ == '__main__':
 	gapi = GoogleApi()
-	print gapi.decode_address('alpha tau omega berkeley')
+	print gapi.decode_address('2327 warring st')
