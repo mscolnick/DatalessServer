@@ -1,7 +1,7 @@
 import requests
 import json
 import re
-from app.apis import GoogleApi
+from app.apis.Google import GoogleApi
 
 #------------------------HERE API--------------------------------------#
 #get weather forecast and walking directions
