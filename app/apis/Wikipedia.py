@@ -1,6 +1,5 @@
 import wikipedia
 import json
-import IPython as ipy
 
 class WikipediaApi:
 	def __init__(self):
