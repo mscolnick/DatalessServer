@@ -1,7 +1,7 @@
 import requests
 import json
 import re
-from app.apis.Google import GoogleApi
+from Google import GoogleApi
 
 #------------------------HERE API--------------------------------------#
 #get weather forecast and walking directions
@@ -74,7 +74,7 @@ class HereApi:
     # }
     lat0, lon0 = self.gapi.decode_address(address0)
     lat1, lon1 = self.gapi.decode_address(address1)
-    url = 'http://route.cit.api.here.com/routing/7.2/calculateroute.json?app_id=%s&app_code=%s&waypoint0=geo!%s,%s&waypoint1=geo!%s,%s&mode=fastest;vehicle;traffic:disabled' % (self.app_id, self.app_code, lat0, lon0, lat1, lon1)
+    url = 'http://route.cit.api.here.com/routing/7.2/calculateroute.json?app_id=%s&app_code=%s&waypoint0=geo!%s,%s&waypoint1=geo!%s,%s&mode=fastest;car;traffic:disabled' % (self.app_id, self.app_code, lat0, lon0, lat1, lon1)
     resp = requests.get(url)
     resp = json.loads(resp.content)['response']['route'][0]
     summary = re.sub('<[^<]+?>', '', resp['summary']['text'])
