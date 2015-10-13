@@ -11,3 +11,4 @@ config/development/database.db
 !.elasticbeanstalk/*.global.yml
 *.pem
 
+credentials.csv

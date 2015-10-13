@@ -1,0 +1,45 @@
+<!doctype html>
+<title>Twilio Messages</title>
+<link rel=stylesheet type=text/css href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<style>
+.delivered {
+    background-color: limegreen !important;
+}
+
+.received {
+    background-color: skyblue !important;
+}
+
+.default-back {
+    background-color: orangered;
+}
+
+</style>
+
+<div class=page>
+  <h1>Twilio Messages</h1>
+
+  <table class="table">
+    <tr>
+      <th>Sid</th>
+      <th>Status</th>
+      <th>To</th>
+      <th>Body</th>
+      <th>Direction</th>
+      <th>ErrorCode</th>
+      <th>ErrorMessage</th>
+    </tr>
+    {% for m in messages %}
+      <tr>
+        <td class="default-back {{ m.status }}">{{ m.sid }}</td>
+        <td class="default-back {{ m.status }}">{{ m.status }}</td>
+        <td>{{ m.to }}</td>
+        <td>{{ m.body }}</td>
+        <td>{{ m.direction }}</td>
+        <td>{{ m.errorCode }}</td>
+        <td>{{ m.errorMessage }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+</div>

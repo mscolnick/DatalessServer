@@ -23,6 +23,11 @@ def messages():
   messages = h.getAllMessages()
   return render_template('messages.html', messages=messages)
 
+@blueprint.route('/messageview')
+def messageView():
+  messages = mh.getMessages()
+  return render_template('TwilioView.html', messages=messages)
+
 @blueprint.route('/recieve', methods=['POST'])
 def recieve():
   if request.method == 'POST':
